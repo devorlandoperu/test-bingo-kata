@@ -1,0 +1,18 @@
+{
+    "name": "orlando/bingo-kata",
+    "description": "Bingo kata test",
+    "authors": [
+        {
+            "name": "Orlando Quispe Arqque",
+            "email": "sise799@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\" : "app/"
+        }
+    }
+}
