@@ -20,6 +20,9 @@ class CBingoCard
         $this -> grid['G'] = $this -> generate_column_with_boundaries(46, 60);
         $this -> grid['O'] = $this -> generate_column_with_boundaries(61, 75);
 
+        //Free space at the middle of a card
+        $this -> grid['N'][2] = null;
+
         return new CCard( $this->grid );
     }
 

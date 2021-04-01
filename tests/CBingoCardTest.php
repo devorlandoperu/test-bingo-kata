@@ -5,11 +5,19 @@ use App\CBingoCard;
 
 class CBingoCartTest extends TestCase
 {
-    public function testCardContainsValidNumbersAccordingToColumn()
+    public function testCardContainsValidNumbersRespectingColumnBoudaries()
     {
         $bingo_card = new CBingoCard();
-        $cart = $bingo_card -> generate_card();
+        $card = $bingo_card -> generate_card();
 
-        $this->assertTrue($cart->is_valid());
-    }  
+        $this->assertTrue($card->is_valid());
+    }
+
+    public function testCardHasFreeSpaceInTheMiddle()
+    {
+        $bingo_card = new CBingoCard();
+        $card = $bingo_card -> generate_card();
+
+        $this->assertTrue($card -> has_free_space_in_the_middle());
+    }
 }

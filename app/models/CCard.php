@@ -32,19 +32,27 @@ class CCard
     {
         return $this -> column_elements_between($this -> grid['B'], 1, 15)
             && $this -> column_elements_between($this -> grid['I'], 16, 30)
-            && $this -> column_elements_between($this -> grid['N'], 31, 45)
+            && $this -> column_elements_between($this -> grid['N'], 31, 45, $allowNull=true)
             && $this -> column_elements_between($this -> grid['G'], 46, 60)
             && $this -> column_elements_between($this -> grid['O'], 61, 75);
     }
 
-    private function column_elements_between($column, $min, $max): bool
+    private function column_elements_between($column, $min, $max, $allowNull = false): bool
     {
         foreach ($column as $number)
         {
+            if($allowNull && is_null($number))
+                continue;
+
             if($number < $min || $number > $max)
                 return false;
         }
 
         return true;
+    }
+
+    public function has_free_space_in_the_middle()
+    {
+        return is_null($this -> grid['N'][2]);
     }
 }
