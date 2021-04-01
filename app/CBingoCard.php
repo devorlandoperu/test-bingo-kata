@@ -4,7 +4,7 @@ use App\models\CCard;
 
 class CBingoCard
 {
-    private $card = [
+    private $grid = [
         'B' => [],
         'I' => [],
         'N' => [],
@@ -14,6 +14,29 @@ class CBingoCard
 
     public function generate_card() : CCard
     {
-        return new CCard( $this->card );
+        $this -> grid['B'] = $this -> generate_column_with_boundaries(1, 15);
+        $this -> grid['I'] = $this -> generate_column_with_boundaries(16, 30);
+        $this -> grid['N'] = $this -> generate_column_with_boundaries(31, 45);
+        $this -> grid['G'] = $this -> generate_column_with_boundaries(46, 60);
+        $this -> grid['O'] = $this -> generate_column_with_boundaries(61, 75);
+
+        return new CCard( $this->grid );
+    }
+
+    public function generate_column_with_boundaries($min, $max)
+    {
+        $column = [];
+
+        while (sizeof($column) < 5)
+        {
+            $number = rand($min, $max);
+
+            if(!in_array($number, $column))
+            {
+                $column[] = $number;
+            }
+        }
+
+        return $column;
     }
 }

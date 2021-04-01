@@ -31,11 +31,10 @@ class CCard
     private function respect_boundaries(): bool
     {
         return $this -> column_elements_between($this -> grid['B'], 1, 15)
-            && $this -> grid['B'] >= 1 && $this -> grid['B'] <= 15
-            && $this -> grid['I'] >= 16 && $this -> grid['I'] <= 30
-            && $this -> grid['N'] >= 31 && $this -> grid['N'] <= 45
-            && $this -> grid['G'] >= 46 && $this -> grid['G'] <= 60
-            && $this -> grid['O'] >= 61 && $this -> grid['O'] <= 75;
+            && $this -> column_elements_between($this -> grid['I'], 16, 30)
+            && $this -> column_elements_between($this -> grid['N'], 31, 45)
+            && $this -> column_elements_between($this -> grid['G'], 46, 60)
+            && $this -> column_elements_between($this -> grid['O'], 61, 75);
     }
 
     private function column_elements_between($column, $min, $max): bool
