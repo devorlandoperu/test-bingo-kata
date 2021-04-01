@@ -1,6 +1,8 @@
 <?php
 namespace app;
+
 use App\models\CCard;
+use App\CBingoRules;
 
 class CBingoCard
 {
@@ -14,12 +16,12 @@ class CBingoCard
 
     public function generate_card() : CCard
     {
-        $this -> grid['B'] = $this -> generate_column_with_boundaries(1, 15);
-        $this -> grid['I'] = $this -> generate_column_with_boundaries(16, 30);
-        $this -> grid['N'] = $this -> generate_column_with_boundaries(31, 45);
-        $this -> grid['G'] = $this -> generate_column_with_boundaries(46, 60);
-        $this -> grid['O'] = $this -> generate_column_with_boundaries(61, 75);
-
+        foreach($this->grid as $column_letter => $column)
+        {
+            $this->grid[$column_letter] = $this -> generate_column_with_boundaries(
+                CBingoRules::BOUNDARIES[$column_letter][0],
+                CBingoRules::BOUNDARIES[$column_letter][1]);
+        }
         //Free space at the middle of a card
         $this -> grid['N'][2] = null;
 

@@ -55,4 +55,15 @@ class CCard
     {
         return is_null($this -> grid['N'][2]);
     }
+
+    public function get_numbers_in_card()
+    {
+        return array_merge(
+            $this -> grid['B'],
+            $this -> grid['I'],
+            $this -> grid['N'],
+            $this -> grid['G'],
+            $this -> grid['O']
+        );
+    }
 }

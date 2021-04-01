@@ -1,6 +1,7 @@
 <?php 
 use PHPUnit\Framework\TestCase;
 use App\CBingo;
+use App\CBingoRules;
 
 class CBingoTest extends TestCase
 {
@@ -9,14 +10,17 @@ class CBingoTest extends TestCase
         $caller = new CBingo();
         $number = $caller->call_number();
 
-        $this->assertTrue($number >=1 && $number <=75);
+        $this->assertTrue(
+            $number >= CBingoRules:: MIN_CARD_NUMBER
+         && $number <= CBingoRules:: MAX_CARD_NUMBER
+        );
     }
 
     public function testWhenCalls75TimeAllNumbersArePresent()
     {
         $caller = new CBingo();
         $called_numbers = [];
-        $expectedNumbers = range(1,75);
+        $expectedNumbers = range(CBingoRules:: MIN_CARD_NUMBER, CBingoRules:: MAX_CARD_NUMBER);
 
         for ($i=1; $i <=75 ; $i++) { 
             
