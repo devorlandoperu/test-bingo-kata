@@ -1,4 +1,4 @@
-## Bingo Kata
+## TDD Bingo Kata
 
 ### Llamar a números de bingo
 - Necesitamos poder llamar a los números
@@ -19,7 +19,7 @@ o modificar la forma en que funciona.
 | B |  1 | 15 |
 | I | 16 | 30 |
 | N | 31 | 45 |
-| G | 45 | 60 |
+| G | 46 | 60 |
 | O | 61 | 75 |
 
 ### Comprobación de cartas de bingo
